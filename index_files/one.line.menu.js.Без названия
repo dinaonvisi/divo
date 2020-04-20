@@ -1,0 +1,118 @@
+(function($) {
+    $.fn.oneLineMenu = function(options) {
+
+        var settings = $.extend({
+            minWidth  : 940,
+            lastClass : 'dropdown-wrap',
+            left: -25,
+            ulClass: 'dropdown-ul'
+        }, options);
+        var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || /[\?&]panel_fake_mobile=1(&|$)/.test(document.location.search);
+
+        return this.each(function() {
+            var $this      = $(this),
+                $li        = $this.find('> li'),
+                destroyed  = false,
+                windoWidth = $(window).width();
+
+            $(window).resize(function(){
+                var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || /[\?&]panel_fake_mobile=1(&|$)/.test(document.location.search);
+                windoWidth = $(window).width();
+
+                if (windoWidth <= settings.minWidth) {
+                    if (!destroyed) destroy();
+                    return true;
+                }
+
+                destroy();
+                init();
+            });
+
+            if (windoWidth > settings.minWidth) init();
+
+            function init() {
+                var liWidth = 0,
+                    ulWidth   = $this.outerWidth(),
+                    copy, toHide;
+
+                $li.each(function(i){
+                    var itemWidth   = $(this).outerWidth(),
+                        marginLeft  = parseFloat($(this).css('marginLeft')),
+                        marginRight = parseFloat($(this).css('marginRight'));
+
+                    itemWidth = itemWidth + marginLeft + marginRight;
+
+                    liWidth += itemWidth;
+
+                    var nextWidth       = 0,
+                        nextMarginLeft  = 0,
+                        nextMarginRight = 0;
+
+                    if ($(this).next().get(0)) {
+                        nextWidth       = $(this).next().outerWidth(),
+                        nextMarginLeft  = parseFloat($(this).next().css('marginLeft')),
+                        nextMarginRight = parseFloat($(this).next().css('marginRight'));
+                    }
+
+                    nextWidth = nextWidth + nextMarginLeft + nextMarginRight;
+                    
+                    if (ulWidth < (liWidth + nextWidth)) {
+                        copy   = $li.slice(0);
+                        toHide = copy.splice(i, ($li.length - i));
+
+                        return false;
+                    }
+                });
+
+                var res = {
+                    copy : copy,
+                    toHide : toHide
+                };
+
+                if (res.copy && res.toHide) {
+                	$this.html(res.copy);
+
+	                var $newLi = $('<li></li>').addClass(settings.lastClass).append('<ul></ul>');
+	                $newLi.find('ul').append(res.toHide);
+	                $this.append($newLi);
+	
+	                var $newUl = $newLi.find('ul:first');
+	               
+                    if (isMobile) {
+    	                $newLi.click(function(){
+    	                	$newLi.toggleClass('active');
+    	                    $newUl.toggleClass(settings.ulClass).toggle();
+    	                    
+    	                    var ulWidth = $newUl.width(),
+    	                    	ulPosition = $newUl.offset().left ,
+    	                    	liWidth = $newLi.width();
+    	                    	
+                        	// if (windoWidth<ulWidth+ulPosition) {
+                        	// 	$newUl.css('left', -(ulWidth-liWidth));
+                        	// } else {
+                        	// 	$newUl.css('left', settings.left);
+                        	// }
+    	                });
+                    }
+	                
+	                $(document).on('click', function(event){
+			        	if ($(event.target).closest($newLi).length) return;
+			        	
+			        	$newUl.removeAttr('style');
+			        	$newLi.removeClass('active');
+			        });
+                }
+
+                destroyed = false;
+            }
+
+            function destroy() {
+                $('.' + settings.lastClass).unbind('click');
+
+                $this.html($li);
+
+                destroyed = true;
+            }
+        });
+    };
+})(jQuery);

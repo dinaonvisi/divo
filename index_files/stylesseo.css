@@ -1,0 +1,117 @@
+.seo-p1{
+    color: #9D0571;
+    text-align: center;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: bold;
+}
+.seo-text {
+    text-align: justify;
+    font-size: 15px;
+}
+.seo_phone {
+    display: inline-block;
+    font: 20px/50px "rcr",Arial,sans-serif;
+    margin: 12px 43px 0px;
+    color: #9D0571;
+    background: transparent url(smartphone-call3.png) no-repeat scroll 0px 4px / 50px auto;
+    text-align: left;
+    padding: 0px 0px 5px 55px;
+    font-family: 'fr';
+    font-family: 'OpenSansRegular', Arial, Helvetica, sans-serif;
+    font-family: 'osb', arial, sans-serif;
+    font-size: 21px;
+}
+.seo_letter {
+    display: inline-block;
+    font: 23px/50px 'OpenSansRegular', Arial, Helvetica, sans-serif;
+    margin: -62px 0px -27px;
+    color: #9D0571 !important;
+    padding: 0px 0px 5px 78px;
+    background: transparent url(opened-email-envelope3.png) no-repeat scroll 19px 1px / 50px auto;
+    text-align: left;
+    font-family: 'osb', arial, sans-serif;
+    font-size: 21px;
+}
+.seo_blok {text-align: center;}
+h2.seo_h2 {
+    /* background: center #6AA71B; */
+    padding: 12px 15px;
+    font-size: 18px;
+    text-align: center;
+    margin: 16px 0;
+    color: #e60986;
+    /* border-radius: 4px; */
+    behavior: url(/g/pie//pie.htc);
+    font-family: 'osb', arial, sans-serif;
+}
+.seo_ul {
+    list-style: none;
+    text-align: left;
+}
+.seo_ul li {
+    background: url(1.png) 4px 5px no-repeat;
+    padding: 7px 10px 0px 25px;
+    font-size: 16px;
+    background-size: 15px;
+    margin: 0px -15px;
+    font-style: italic;
+}
+
+.seo-block{
+    background: #fad9ea;
+    padding: 13px;
+    border-radius: 5px;
+}
+
+.seo_blok1 a {
+    background: #9D0571;
+    border-radius: 79px;
+    box-shadow: 0 5px 10px -9px #000000;
+    color: #fff;
+    display: inline-block;
+    float: right;
+    height: 97px;
+    margin: -16px 0 10px 18px;
+    padding: 25px 0 0;
+    text-align: center;
+    text-decoration: none;
+    width: 127px;
+    line-height: 27px;
+    font-style: italic;
+    background-size: 23px;
+    font-size: 19px;
+}
+
+
+.seo_blok1 a:hover {
+    background: #e70988;
+    /* text-decoration: underline; */
+    color: #fff;
+}
+
+.seo_blok2 a {
+    background: #9D0571;
+    border-radius: 79px;
+    box-shadow: 0 5px 10px -9px #000000;
+    color: #fff;
+    display: inline-block;
+    float: right;
+    height: 97px;
+    margin: -40px 0 10px 18px;
+    padding: 25px 0 0;
+    text-align: center;
+    text-decoration: none;
+    width: 127px;
+    line-height: 27px;
+    font-style: italic;
+    background-size: 23px;
+    font-size: 19px;
+}
+
+
+.seo_blok2 a:hover {
+    background: #e70988;
+    /* text-decoration: underline; */
+    color: #fff;
+}
